@@ -1,29 +1,36 @@
+import { useState } from "react";
+import NavBar from "../Components/NavBar";
+import { BarsIcon, MoonIcon, SunIcon } from "../utils/icons";
+import Logo from "../Components/Logo";
+import InputBox from "../Components/InputBox";
 
 function Home() {
-  const nabTabs = ['Home','Blogs','About','Contact Us']
+  const [navBarStatus, setNavBarStatus] = useState(false);
+  const [isDarkModeOn, setDarkMode] = useState(true);
   return (
     <div>
-      <header className="bg-green-400 w-full shadow-md grid grid-cols-4 items-center">
-        <div>
-          <h1 className="text-3xl font-extrabold text-white">Decoder <span className="text-red-800">Shell</span></h1>
-          <h1 className="text-white font-semibold">D<span className="text-red-800">S</span></h1>
+      <header>
+        <div className="bg-primary w-full flex items-center justify-between relative px-4 py-2">
+          <div className="flex items-center gap-2">
+            <BarsIcon className="text-[20px] cursor-pointer sm:hidden text-forth" onClick={()=>setNavBarStatus((prev)=>!prev)} />
+            <Logo />
+          </div>
+          <NavBar  navBarStatus={navBarStatus} setNavBarStatus={setNavBarStatus}/>
+          <div className=" flex items-center justify-between gap-3 mx-2">
+          <InputBox placeholder={"search..."}/>
+            <div
+              className="cursor-pointer"
+              onClick={() => {
+                setDarkMode(!isDarkModeOn);
+              }}
+            >
+              {isDarkModeOn ? <MoonIcon className="text-forth" size={'20px'}/> : <SunIcon size={'20px'} className="text-forth" />}
+            </div>
+          </div>
         </div>
-      <nav className="">
-        <ul className="list-none flex ">
-        {nabTabs.map((item,index)=>(
-          <a href={item}><li className="text-md mx-3 p-1 font-semibold hover:text-blue-800 active:text-blue-700 " key={index}>{item}</li></a>
-        ))}
-        </ul>
-      </nav>
-      <div>
-        <input type="text" name="search" id="searchBar" className="border "/>
-      </div>
-      <div className="w-20">
-
-      </div>
       </header>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
