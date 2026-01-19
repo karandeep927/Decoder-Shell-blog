@@ -19,7 +19,8 @@ function HomeSlider() {
     },
   };
     return (
-    <Carousel swipeable={true}
+    <Carousel 
+      swipeable={true}
       draggable={false}
       responsive={responsive}
       ssr={true}
