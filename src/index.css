@@ -1,20 +1,14 @@
 @import "tailwindcss";
 @theme {
-  --breakpoint-xs: 30rem;
-  --color-primary: #312f35;
-  --color-second: #334365;
-  --color-third:#222222;
-  --color-forth:#ded8cf;
-  --color-fifth:#7234fa;
-  --color-navBar:#1E293B;
-  --color-navLinks:#E2E8F0;
-  --color-navLinksHover:#38BDF8;
-  --color-pageBg:#F8FAFC;
-  --color-heading:#0F172A;
-  --color-bodyPrimary:#0F172A;
-  --color-bodySecondary:#475569;
-  --color-btn:#2563EB;
-  --color-borderColor:#2563EB;
-
-  --color-cardBorder:#E2E8F0;
+  --color-primary: #433d8b; /* buttons, links, active states */
+  --color-surface: #2e236c; /* cards, inputs, elevated UI */
+  --color-base: #17153b; /* dark backgrounds, footer */
+  --color-muted: #c8acd6;
+}
+.dark {
+  @theme {
+    --color-base: #17153B;
+    --color-surface: #2E236C;
+    --color-muted: #C8ACD6;
+  }
 }

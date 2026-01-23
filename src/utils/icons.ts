@@ -12,3 +12,22 @@ export const YoutubeIcon = FaYoutube;
 export const TwitterIcon = FaSquareXTwitter;
 // export const = ;
 // export const = ;
+
+export const navLinks = [
+    {
+        name:'Home',
+        path:'/',
+    },
+    {
+        name:'Blogs',
+        path:'/blog',
+    },
+    {
+        name:'About Us',
+        path:'/about',
+    },
+    {
+        name:'Contact Us',
+        path:'/contact',
+    }
+]

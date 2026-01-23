@@ -1,10 +1,11 @@
 import logo from "@/assets/images/logo.png";
+import { Link } from "react-router-dom";
 
 function Logo({className=""}) {
   return (
-      <a href="/" className={className}>
+      <Link to="/" className={className}>
         <img src={logo} alt="Decoder Shell logo" className="w-32"/>
-      </a>
+      </Link>
   );
 }
 

@@ -1,27 +1,61 @@
+import { Link } from "react-router-dom"
 import { CloseIcon } from "../../utils/icons"
+import { navLinks } from "../../utils/icons"
 
-function NavBar({navBarStatus,toggleNavBar,navTabs}) {
- 
+function NavBar({navBarStatus,toggleNavBar}) {
   return (
-    <ul className="text-white">
-      {/* mobile version */}
-      <div className={`absolute z-30 bg-navBar w-full h-screen top-0 md:hidden transition-all duration-700  ${navBarStatus ? "-left-full" : "left-0"}`}>
-        <div className="w-full flex items-center justify-end p-2" >
-          <CloseIcon onClick={toggleNavBar}  className="cursor-pointer"/>
-        </div>
-      {navTabs.map((value,id)=>(
-        <li key={`${id}`} className=" p-2 text-center text-navLinks transition-all duration-500 border-b rounded hover:bg-navLinksHover" ><a href={`/${value}`}>{value}</a></li>
-      ))}
-      </div>
+    <nav className="relative">
+  {/* Mobile Menu */}
+  <ul
+    className={`
+      absolute z-30 w-full h-screen top-0 md:hidden
+      bg-muted text-base
+      dark:bg-surface dark:text-muted
+      transition-all duration-700
+      ${navBarStatus ? "-left-full" : "left-0"}
+    `}
+  >
+    <li className="w-full flex justify-end p-3">
+      <CloseIcon
+        onClick={toggleNavBar}
+        className="cursor-pointer text-primary"
+      />
+    </li>
 
-      {/* Desktop version */}
-      <div className="p-1 mx-2 hidden md:flex items-center justify-between gap-3 shadow-md">
-        {navTabs.map((value,id)=>(
-        <li key={`${id}`}  className="mx-2 py-1 px-3 rounded transition-all text-navLinks duration-500 hover:bg-navLinksHover"><a href={`/${value}`}>{value}</a></li>
-      ))}
-      </div>
-       
-    </ul>
+    {navLinks.map((value, id) => (
+      <li
+        key={id}
+        className="
+          p-3 text-center
+          border-b border-primary/10
+          hover:text-primary
+          transition-colors duration-300
+        "
+      >
+        <Link to={value.path}>{value.name}</Link>
+      </li>
+    ))}
+  </ul>
+
+  {/* Desktop Menu */}
+  <ul className="hidden md:flex items-center gap-3 px-3">
+    {navLinks.map((value, id) => (
+      <li
+        key={id}
+        className="
+          px-3 py-1 rounded-md
+          text-base dark:text-muted
+          hover:bg-primary/10
+          hover:text-primary
+          transition-all duration-300
+        "
+      >
+        <Link to={value.path}>{value.name}</Link>
+      </li>
+    ))}
+  </ul>
+</nav>
+
   )
 }
 
